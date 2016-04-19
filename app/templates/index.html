@@ -1,6 +1,11 @@
 {% extends "base.html" %}
+
 {% block content %}
-	<h1>Hello, {{ user.nickname }}!</h1>
+	{% if current_user.is_authenticated %}
+		<h1>Hello, {{ current_user.nickname }}!</h1>
+	{% else %}
+		<h1>Hello, User!</h1>
+	{% endif %}
 	{% for post in posts %}
 	<div>
 		<p> {{ post.author.nickname }} says: <b> {{ post.body }}</b></p>

@@ -11,7 +11,7 @@ from .oauth import OAuthSignIn
 @app.route('/')
 @app.route('/index')
 def index():
-    user = {'nickname': "World"}  # fake user
+    user = {'nickname': "Charliie"}  # fake user
     posts = [
         {
             'author': {'nickname': "Flavio"},
@@ -38,9 +38,15 @@ def login():
                            providers=app.config['OPENID_PROVIDERS'])
 
 
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
+
+
 @app.route('/authorize/<provider>')
 def oauth_authorize(provider):
-    if not current_user.is_anonymous():
+    if not current_user.is_anonymous:
         return redirect(url_for('index'))
     oauth = OAuthSignIn.get_provider(provider)
     return oauth.authorize()
@@ -48,7 +54,7 @@ def oauth_authorize(provider):
 
 @app.route('/callback/<provider>')
 def oauth_callback(provider):
-    if not current_user.is_anonymous():
+    if not current_user.is_anonymous:
         return redirect(url_for('index'))
     oauth = OAuthSignIn.get_provider(provider)
     social_id, username, email = oauth.callback()

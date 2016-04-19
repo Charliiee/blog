@@ -8,13 +8,13 @@ SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'app.db')
 SQLALCHEMY_MIGRATE_REPO = os.path.join(basedir, 'db_repository')
 SQLALCHEMY_TRACK_MODIFICATIONS = True
 
-WTF_CSRF_ENABLED = True
+# WTF_CSRF_ENABLED = True
 SECRET_KEY = "you-will-never-guess"
 
 OAUTH_CREDENTIALS = {
     'facebook': {
         'id': '957784927671568',
-        'secret': ''
+        'secret': 'b5ce75de8dadb1a0ca05b6868b65cd41'
     }
 }
 
