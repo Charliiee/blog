@@ -11,6 +11,13 @@ SQLALCHEMY_TRACK_MODIFICATIONS = True
 WTF_CSRF_ENABLED = True
 SECRET_KEY = "you-will-never-guess"
 
+OAUTH_CREDENTIALS = {
+    'facebook': {
+        'id': '957784927671568',
+        'secret': ''
+    }
+}
+
 OPENID_PROVIDERS = [
     {'name': "Google", 'url': "https://www.google.com/accounts/o8/id"},
     {'name': "Yahoo", 'url': "https://me.yahoo.com"},
