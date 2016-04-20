@@ -1,5 +1,5 @@
 from . import app, db, login_manager
-from .forms import LoginForm
+from .forms import LoginForm, RegisterForm
 from .models import User
 from flask import (render_template, flash, redirect,
                    session, url_for, request, g)
@@ -10,8 +10,9 @@ from .oauth import OAuthSignIn
 
 @app.route('/')
 @app.route('/index')
+# @login_required
 def index():
-    user = {'nickname': "Charliie"}  # fake user
+    user = current_user
     posts = [
         {
             'author': {'nickname': "Flavio"},
@@ -22,23 +23,33 @@ def index():
             'body': "The Avengers movie was so cool!"
         }
     ]
-    return render_template('index.html', title='Home', user=user, posts=posts)
+    return render_template('index.html', title='Home', posts=posts)
+
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if not current_user.is_anonymous and current_user.is_authenticated:
+        return redirect(url_for('index'))
+    form = RegisterForm()
+    if form.validate_on_submit():
+        pass
+    return render_template('register.html', title='Sign Up', form=form)
 
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    if g.user is not None and g.user.is_authenticated:
+    if not current_user.is_anonymous and current_user.is_authenticated:
         return redirect(url_for('index'))
     form = LoginForm()
     if form.validate_on_submit():
         session['remember_me'] = form.remember_me.data
     return render_template('login.html',
                            title='Sign In',
-                           form=form,
-                           providers=app.config['OPENID_PROVIDERS'])
+                           form=form)
 
 
 @app.route('/logout')
+@login_required
 def logout():
     logout_user()
     return redirect(url_for('index'))

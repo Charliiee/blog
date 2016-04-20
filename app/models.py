@@ -3,6 +3,14 @@ from flask.ext.login import UserMixin
 
 
 class User(UserMixin, db.Model):
+    '''
+        UserMixin already implements:
+            - is_authenticated,
+            - is_active,
+            - is_anonymous,
+            - get_id,
+        properties for us
+    '''
     id = db.Column(db.Integer, primary_key=True)
     social_id = db.Column(db.String(64), index=False, unique=True)
     nickname = db.Column(db.String(64), index=True, unique=True)
