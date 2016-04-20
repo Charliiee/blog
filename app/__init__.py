@@ -7,6 +7,7 @@ app = Flask(__name__)
 app.config.from_object('config')
 
 db = SQLAlchemy(app)
-lm = LoginManager(app)
+login_manager = LoginManager(app)
+login_manager.login_view = 'login'
 
 from . import views, models

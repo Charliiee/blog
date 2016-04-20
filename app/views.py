@@ -1,4 +1,4 @@
-from . import app, db, lm
+from . import app, db, login_manager
 from .forms import LoginForm
 from .models import User
 from flask import (render_template, flash, redirect,
@@ -70,6 +70,6 @@ def oauth_callback(provider):
     return redirect(url_for('index'))
 
 
-@lm.user_loader
+@login_manager.user_loader
 def load_user(id):
     return User.query.get(int(id))
