@@ -56,20 +56,13 @@ class FacebookSignIn(OAuthSignIn):
         if 'code' not in request.args:
             return None, None, None
         oauth_session = self.service.get_auth_session(
-                data={'code': request.args['code'],
-                      'grant_type': 'authorization_code',
-                      'redirect_uri': self.get_callback_url()
-                      }
+            data={'code': request.args['code'],
+                  'grant_type': 'authorization_code',
+                  'redirect_uri': self.get_callback_url()
+                  }
         )
         me = oauth_session.get('me?fields=id,email,first_name').json()
-        return (
-                'facebook$' + me['id'],
-                me.get('first_name'),
-                # me.get('email').split('@')[0],  # Facebook doesn't provide
-                                                # username, so the email's
-                                                # user is used instead
-                me.get('email')
-        )
+        return ('facebook$' + me['id'], me.get('first_name'), me.get('email'))
 
 
 # class GoogleSignIn(OAuthSignIn):

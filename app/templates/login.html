@@ -5,9 +5,9 @@
 	<h1>Sign In</h1>
 	<form action="" method="post" name="login">
 		{{ form.hidden_tag() }}
-		{{ form.username.label }} {{ form.username }} <br><br>
-		{{ form.password.label }} {{ form.password }} <br>
-		{{ form.remember_me }} {{ form.remember_me.label }}
+		{{ form.email.label }} {{ form.email }} <br><br>
+		{{ form.password.label }} {{ form.password }} <br><br>
+		{{ form.remember_me }} {{ form.remember_me.label }} <br><br>
 		{# <p>
 			Please, enter your OpenID:<br>
 			{{ form.openid(size=20)}} <br>
