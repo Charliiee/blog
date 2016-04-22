@@ -1,5 +1,8 @@
 from flask import current_app, redirect, request, url_for
-from rauth import OAuth1Service, OAuth2Service
+from rauth import OAuth2Service
+from urllib.request import urlopen
+
+import json
 
 
 class OAuthSignIn(object):
@@ -49,8 +52,8 @@ class FacebookSignIn(OAuthSignIn):
         return redirect(self.service.get_authorize_url(
                         scope='email',
                         response_type='code',
-                        redirect_uri=self.get_callback_url()
-                        ))
+                        redirect_uri=self.get_callback_url())
+                        )
 
     def callback(self):
         if 'code' not in request.args:
@@ -62,12 +65,51 @@ class FacebookSignIn(OAuthSignIn):
                   }
         )
         me = oauth_session.get('me?fields=id,email,first_name').json()
-        return ('facebook$' + me['id'], me.get('first_name'), me.get('email'))
+        return ('facebook$' + me['id'], me['first_name'], me.get('email'))
 
 
-# class GoogleSignIn(OAuthSignIn):
-#     pass
+class GoogleSignIn(OAuthSignIn):
 
+    def __init__(self):
+        super(GoogleSignIn, self).__init__('google')
+        googleinfo = urlopen(
+            'https://accounts.google.com/.well-known/openid-configuration'
+        ).read().decode('utf-8')
+
+        google_params = json.loads(googleinfo)
+        self.service = OAuth2Service(
+            name='google',
+            client_id=self.consumer_id,
+            client_secret=self.consumer_secret,
+            authorize_url=google_params.get('authorization_endpoint'),
+            access_token_url=google_params.get('token_endpoint'),
+            base_url=google_params.get('userinfo_endpoint')
+        )
+
+    def authorize(self):
+        return redirect(self.service.get_authorize_url(
+                        scope='email',
+                        response_type='code',
+                        redirect_uri=self.get_callback_url())
+                        )
+
+    def callback(self):
+        if 'code' not in request.args:
+            return None, None, None
+        # Google response crashes service.get_auth_session() on python 3
+        # but getting raw access token doesn't, though  get_auth_session
+        # just call this one. It's probably a not handled json case for python3
+        response = self.service.get_raw_access_token(
+            data={'code': request.args['code'],
+                  'grant_type': 'authorization_code',
+                  'redirect_uri': self.get_callback_url()
+                  }
+        )
+        response = response.json()
+        oauth_session = self.service.get_session(response['access_token'])
+        me = oauth_session.get('https://www.googleapis.com/oauth2/v2/userinfo')
+        me = me.json()
+        return ('google$' + me['id'], me['given_name'], me.get('email'))
 
 # class TwitterSignIn(OAuthSignIn):
 #     pass

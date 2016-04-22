@@ -19,5 +19,8 @@
 			{% endfor %}
 		</p> #}
 		<input type="submit" value="Sign In">
+		<p>---------------- Or ----------------</p>
+		<a href="{{ url_for('oauth_authorize', provider='facebook') }}">Login with Facebook</a><br>
+		<a href="{{ url_for('oauth_authorize', provider='google') }}">Login with Google</a>
 	</form>
 {% endblock content %}

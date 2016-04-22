@@ -15,6 +15,10 @@ OAUTH_CREDENTIALS = {
     'facebook': {
         'id': '957784927671568',
         'secret': 'b5ce75de8dadb1a0ca05b6868b65cd41'
+    },
+    'google': {
+        'id': '980519130572-bjq9qegvo7qr2teuctt55qk39e54ihn8.apps.googleusercontent.com',
+        'secret': 'F1xqVrVrLtWWCKA7GQK7NWtH'
     }
 }
 
