@@ -3,20 +3,24 @@
 
 {% block content %}
 	<h1>Edit your Profile</h1>
-	<form action="" method="post" name="edit"></form>
-	{{ form.hidden_tag() )}}
-	<table>
-		<tr>
-			<td>Your Username:</td>
-			<td>{{ form.username(size=24) }}</td>
-		</tr>
-		<tr>
-			<td>About Yourself:</td>
-			<td>{{ form.about_me(cols=32, rows=4) }}</td>
-		</tr>
-		<tr>
-			<td></td>
-			<td><input type="submit" value="Save Changes"></td>
-		</tr>
-	</table>
+	<form action="" method="post" name="edit">
+		{{ form.hidden_tag() }}
+		<table>
+			<tr>
+				<td>Your Username:</td>
+				<td>{{ form.username(size=24) }}</td>
+				{% for error in form.username.errors %}
+					<br><span style="color: red;">[{{ error }}]</span>
+				{% endfor %}
+			</tr>
+			<tr>
+				<td>About Yourself:</td>
+				<td>{{ form.about_me(cols=32, rows=4) }}</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="submit" value="Save Changes"></td>
+			</tr>
+		</table>
+	</form>
 {% endblock content %}

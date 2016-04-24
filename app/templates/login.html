@@ -5,8 +5,14 @@
 	<h1>Sign In</h1>
 	<form action="" method="post" name="login">
 		{{ form.hidden_tag() }}
-		{{ form.email.label }} {{ form.email }} <br><br>
-		{{ form.password.label }} {{ form.password }} <br><br>
+		{{ form.username.label }} {{ form.username }} <br>
+		{% for error in form.username.errors %}
+			<span style="color: red;">{{ error }}</span>
+		{% endfor %}<br>
+		{{ form.password.label }} {{ form.password }} <br>
+		{% for error in form.password.errors %}
+			<span style="color: red;">{{ error }}</span>
+		{% endfor %}<br>
 		{{ form.remember_me }} {{ form.remember_me.label }} <br><br>
 		{# <p>
 			Please, enter your OpenID:<br>

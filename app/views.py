@@ -21,12 +21,12 @@ def before_request():
 @app.route('/edit', methods=['GET', 'POST'])
 @login_required
 def edit():
-    form = EditForm()
+    form = EditForm(g.user.username)
     if form.validate_on_submit():
         g.user.username = form.username.data
         g.user.about_me = form.about_me.data
         db.session.add(g.user)
-        db.commit()
+        db.session.commit()
         flash('Your changes have been made.')
         return redirect(url_for('edit'))
     else:
@@ -64,13 +64,13 @@ def login():
         return redirect(url_for('index'))
     form = LoginForm()
     if form.validate_on_submit():
-        user = User.query.filter_by(email=form.email.data,
+        user = User.query.filter_by(username=form.username.data,
                                     password=form.password.data).first()
         if user:
             login_user(user, remember=form.remember_me.data)
             return redirect(request.args.get('next') or url_for('index'))
 
-        flash('Email or Password is invalid')
+        flash('Username or Password is invalid')
 
     return render_template('login.html',
                            title='Sign In',
@@ -105,6 +105,7 @@ def oauth_callback(provider):
     user = User.query.filter((User.social_id == social_id) |
                              (User.email == email)).first()
     if not user:
+        username = User.make_valid_username(username)
         user = User(social_id=social_id, username=username, email=email)
         db.session.add(user)
         db.session.commit()
@@ -145,3 +146,16 @@ def user(username):
         {'author': user, 'body': "Test post #2"}
     ]
     return render_template('user.html', user=user, posts=posts)
+
+
+# Error Pages
+
+@app.errorhandler(404)
+def not_found_error(error):
+    return render_template('404.html'), 404
+
+
+@app.errorhandler(500)
+def internal_error(error):
+    db.session.rollback()
+    return render_template('505.html'), 500
