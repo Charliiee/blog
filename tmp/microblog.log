@@ -1,0 +1,370 @@
+2016-04-23 23:03:36,218 INFO blog startup [in /home/charliie/Documents/flask/blog/app/__init__.py:44]
+2016-04-23 23:33:55,290 INFO blog startup [in /home/charliie/Documents/flask/blog/app/__init__.py:44]
+2016-04-24 13:15:20,254 INFO blog startup [in /home/charliie/Documents/flask/blog/app/__init__.py:44]
+2016-04-24 13:40:09,189 ERROR Exception on /login [POST] [in /home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py:1423]
+Traceback (most recent call last):
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/charliie/Documents/flask/blog/app/views.py", line 77, in login
+    form=form)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/templating.py", line 128, in render_template
+    context, ctx.app)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/templating.py", line 110, in _render
+    rv = template.render(context)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/jinja2/environment.py", line 989, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/jinja2/environment.py", line 754, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/charliie/Documents/flask/blog/app/templates/login.html", line 2, in top-level template code
+    {% extends "base.html" %}
+  File "/home/charliie/Documents/flask/blog/app/templates/base.html", line 31, in top-level template code
+    {% block content %} {% endblock content %}
+  File "/home/charliie/Documents/flask/blog/app/templates/login.html", line 9, in block "content"
+    {% for error in form.username.errors %}
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/jinja2/environment.py", line 408, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'app.forms.LoginForm object' has no attribute 'username'
+2016-04-24 13:40:29,980 ERROR Exception on /login [GET] [in /home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py:1423]
+Traceback (most recent call last):
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/charliie/Documents/flask/blog/app/views.py", line 77, in login
+    form=form)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/templating.py", line 128, in render_template
+    context, ctx.app)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/templating.py", line 110, in _render
+    rv = template.render(context)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/jinja2/environment.py", line 989, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/jinja2/environment.py", line 754, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/charliie/Documents/flask/blog/app/templates/login.html", line 2, in top-level template code
+    {% extends "base.html" %}
+  File "/home/charliie/Documents/flask/blog/app/templates/base.html", line 31, in top-level template code
+    {% block content %} {% endblock content %}
+  File "/home/charliie/Documents/flask/blog/app/templates/login.html", line 9, in block "content"
+    {% for error in form.username.errors %}
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/jinja2/environment.py", line 408, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'app.forms.LoginForm object' has no attribute 'username'
+2016-04-24 13:40:31,771 ERROR Exception on /login [GET] [in /home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py:1423]
+Traceback (most recent call last):
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/charliie/Documents/flask/blog/app/views.py", line 77, in login
+    form=form)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/templating.py", line 128, in render_template
+    context, ctx.app)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/templating.py", line 110, in _render
+    rv = template.render(context)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/jinja2/environment.py", line 989, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/jinja2/environment.py", line 754, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/charliie/Documents/flask/blog/app/templates/login.html", line 2, in top-level template code
+    {% extends "base.html" %}
+  File "/home/charliie/Documents/flask/blog/app/templates/base.html", line 31, in top-level template code
+    {% block content %} {% endblock content %}
+  File "/home/charliie/Documents/flask/blog/app/templates/login.html", line 9, in block "content"
+    {% for error in form.username.errors %}
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/jinja2/environment.py", line 408, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'app.forms.LoginForm object' has no attribute 'username'
+2016-04-24 13:40:32,290 ERROR Exception on /login [GET] [in /home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py:1423]
+Traceback (most recent call last):
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/charliie/Documents/flask/blog/app/views.py", line 77, in login
+    form=form)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/templating.py", line 128, in render_template
+    context, ctx.app)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/templating.py", line 110, in _render
+    rv = template.render(context)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/jinja2/environment.py", line 989, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/jinja2/environment.py", line 754, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/charliie/Documents/flask/blog/app/templates/login.html", line 2, in top-level template code
+    {% extends "base.html" %}
+  File "/home/charliie/Documents/flask/blog/app/templates/base.html", line 31, in top-level template code
+    {% block content %} {% endblock content %}
+  File "/home/charliie/Documents/flask/blog/app/templates/login.html", line 9, in block "content"
+    {% for error in form.username.errors %}
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/jinja2/environment.py", line 408, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'app.forms.LoginForm object' has no attribute 'username'
+2016-04-24 13:42:14,084 ERROR Exception on /login [GET] [in /home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py:1423]
+Traceback (most recent call last):
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/charliie/Documents/flask/blog/app/views.py", line 77, in login
+    form=form)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/templating.py", line 128, in render_template
+    context, ctx.app)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/templating.py", line 110, in _render
+    rv = template.render(context)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/jinja2/environment.py", line 989, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/jinja2/environment.py", line 754, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/charliie/Documents/flask/blog/app/templates/login.html", line 2, in top-level template code
+    {% extends "base.html" %}
+  File "/home/charliie/Documents/flask/blog/app/templates/base.html", line 31, in top-level template code
+    {% block content %} {% endblock content %}
+  File "/home/charliie/Documents/flask/blog/app/templates/login.html", line 8, in block "content"
+    {{ form.emailusername.label }} {{ form.username }} <br>
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/jinja2/environment.py", line 408, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'app.forms.LoginForm object' has no attribute 'emailusername'
+2016-04-24 13:42:25,256 ERROR Exception on /login [GET] [in /home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py:1423]
+Traceback (most recent call last):
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/charliie/Documents/flask/blog/app/views.py", line 77, in login
+    form=form)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/templating.py", line 128, in render_template
+    context, ctx.app)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/templating.py", line 110, in _render
+    rv = template.render(context)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/jinja2/environment.py", line 989, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/jinja2/environment.py", line 754, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/charliie/Documents/flask/blog/app/templates/login.html", line 2, in top-level template code
+    {% extends "base.html" %}
+  File "/home/charliie/Documents/flask/blog/app/templates/base.html", line 31, in top-level template code
+    {% block content %} {% endblock content %}
+  File "/home/charliie/Documents/flask/blog/app/templates/login.html", line 8, in block "content"
+    {{ form.emailusername.label }} {{ form.username }} <br>
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/jinja2/environment.py", line 408, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'app.forms.LoginForm object' has no attribute 'emailusername'
+2016-04-24 13:44:04,935 ERROR Exception on /login [GET] [in /home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py:1423]
+Traceback (most recent call last):
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/charliie/Documents/flask/blog/app/views.py", line 77, in login
+    form=form)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/templating.py", line 128, in render_template
+    context, ctx.app)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/templating.py", line 110, in _render
+    rv = template.render(context)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/jinja2/environment.py", line 989, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/jinja2/environment.py", line 754, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/charliie/Documents/flask/blog/app/templates/login.html", line 2, in top-level template code
+    {% extends "base.html" %}
+  File "/home/charliie/Documents/flask/blog/app/templates/base.html", line 31, in top-level template code
+    {% block content %} {% endblock content %}
+  File "/home/charliie/Documents/flask/blog/app/templates/login.html", line 8, in block "content"
+    {{ form.emailusername.label }} {{ form.username }} <br>
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/jinja2/environment.py", line 408, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'app.forms.LoginForm object' has no attribute 'emailusername'
+2016-04-24 13:44:37,180 ERROR Exception on /login [GET] [in /home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py:1423]
+Traceback (most recent call last):
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/charliie/Documents/flask/blog/app/views.py", line 77, in login
+    form=form)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/templating.py", line 128, in render_template
+    context, ctx.app)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/templating.py", line 110, in _render
+    rv = template.render(context)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/jinja2/environment.py", line 989, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/jinja2/environment.py", line 754, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/charliie/Documents/flask/blog/app/templates/login.html", line 2, in top-level template code
+    {% extends "base.html" %}
+  File "/home/charliie/Documents/flask/blog/app/templates/base.html", line 31, in top-level template code
+    {% block content %} {% endblock content %}
+  File "/home/charliie/Documents/flask/blog/app/templates/login.html", line 8, in block "content"
+    {{ form.username.label }} {{ form.username }} <br>
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/jinja2/environment.py", line 408, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'app.forms.LoginForm object' has no attribute 'username'
+2016-04-24 13:45:22,612 ERROR Exception on /login [GET] [in /home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py:1423]
+Traceback (most recent call last):
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/charliie/Documents/flask/blog/app/views.py", line 77, in login
+    form=form)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/templating.py", line 128, in render_template
+    context, ctx.app)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/templating.py", line 110, in _render
+    rv = template.render(context)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/jinja2/environment.py", line 989, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/jinja2/environment.py", line 754, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/charliie/Documents/flask/blog/app/templates/login.html", line 2, in top-level template code
+    {% extends "base.html" %}
+  File "/home/charliie/Documents/flask/blog/app/templates/base.html", line 31, in top-level template code
+    {% block content %} {% endblock content %}
+  File "/home/charliie/Documents/flask/blog/app/templates/login.html", line 8, in block "content"
+    {{ form.username.label }} {{ form.username }} <br>
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/jinja2/environment.py", line 408, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'app.forms.LoginForm object' has no attribute 'username'
+2016-04-24 13:45:23,801 ERROR Exception on /login [GET] [in /home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py:1423]
+Traceback (most recent call last):
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/charliie/Documents/flask/blog/app/views.py", line 77, in login
+    form=form)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/templating.py", line 128, in render_template
+    context, ctx.app)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/flask/templating.py", line 110, in _render
+    rv = template.render(context)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/jinja2/environment.py", line 989, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/jinja2/environment.py", line 754, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/charliie/Documents/flask/blog/app/templates/login.html", line 2, in top-level template code
+    {% extends "base.html" %}
+  File "/home/charliie/Documents/flask/blog/app/templates/base.html", line 31, in top-level template code
+    {% block content %} {% endblock content %}
+  File "/home/charliie/Documents/flask/blog/app/templates/login.html", line 8, in block "content"
+    {{ form.username.label }} {{ form.username }} <br>
+  File "/home/charliie/Documents/flask/lib/python3.4/site-packages/jinja2/environment.py", line 408, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'app.forms.LoginForm object' has no attribute 'username'
+2016-04-24 13:46:33,175 INFO blog startup [in /home/charliie/Documents/flask/blog/app/__init__.py:44]
+2016-04-24 13:49:13,191 INFO blog startup [in /home/charliie/Documents/flask/blog/app/__init__.py:44]
+2016-04-24 13:52:21,783 INFO blog startup [in /home/charliie/Documents/flask/blog/app/__init__.py:44]
+2016-04-24 13:52:22,195 INFO blog startup [in /home/charliie/Documents/flask/blog/app/__init__.py:44]
+2016-04-24 13:52:24,672 INFO blog startup [in /home/charliie/Documents/flask/blog/app/__init__.py:44]
+2016-04-24 13:53:28,611 INFO blog startup [in /home/charliie/Documents/flask/blog/app/__init__.py:44]
+2016-04-24 13:53:57,255 INFO blog startup [in /home/charliie/Documents/flask/blog/app/__init__.py:44]
+2016-04-24 15:47:02,340 INFO blog startup [in /home/charliie/Documents/flask/blog/app/__init__.py:44]
+2016-04-24 15:48:06,882 INFO blog startup [in /home/charliie/Documents/flask/blog/app/__init__.py:44]
+2016-04-24 15:48:48,182 INFO blog startup [in /home/charliie/Documents/flask/blog/app/__init__.py:44]
+2016-04-24 15:48:49,041 INFO blog startup [in /home/charliie/Documents/flask/blog/app/__init__.py:44]
+2016-04-24 15:49:10,765 INFO blog startup [in /home/charliie/Documents/flask/blog/app/__init__.py:44]
+2016-04-24 15:49:14,486 INFO blog startup [in /home/charliie/Documents/flask/blog/app/__init__.py:44]
+2016-04-24 15:49:45,132 INFO blog startup [in /home/charliie/Documents/flask/blog/app/__init__.py:44]
+2016-04-24 19:25:47,884 INFO blog startup [in /home/charliie/Documents/flask/blog/app/__init__.py:44]
+2016-04-24 20:52:45,229 INFO blog startup [in /home/charliie/Documents/flask/blog/app/__init__.py:44]
+2016-04-24 20:53:44,721 INFO blog startup [in /home/charliie/Documents/flask/blog/app/__init__.py:44]
