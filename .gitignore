@@ -1,5 +1,8 @@
 *.sublime*
 *.pyc
 *.db
+db_repository/*
+tmp/*
 
 config.py
+app/schema.sql

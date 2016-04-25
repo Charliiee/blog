@@ -1,17 +1,18 @@
 #!flask/bin/python
 import os
 import unittest
+from datetime import datetime, timedelta
 
-from config import basedir
 from app import app, db
-from app.models import User
+from app.models import Post, User
+from config import basedir
 
 
 class TestCase(unittest.TestCase):
     def setUp(self):
         app.config['TESTING'] = True
         app.config['WTF_CSRF_ENABLED'] = False
-        app.config['SQLaLCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'test.db')
+        app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'test.db')
         self.app = app.test_client()
         db.create_all()
 
@@ -49,6 +50,29 @@ class TestCase(unittest.TestCase):
         assert not u1.is_following(u2)
         assert u1.followed.count() == 0
         assert u2.followers.count() == 0
+
+    def test_follow_posts(self):
+        # make four users
+        u1 = User(username='john', email='john@example')
+        u2 = User(username='susan', email='susan@example')
+        u3 = User(username='mary', email='mary@example')
+        u4 = User(username='david', email='david@example')
+        db.session.add(u1)
+        db.session.add(u2)
+        db.session.add(u3)
+        db.session.add(u4)
+        # make four posts
+        utcnow = datetime.utcnow()
+        p1 = Post(body="post from john",
+                  author=u1, timestamp=utcnow + timedelta(seconds=1))
+        p2 = Post(body="post from susan",
+                  author=u2, timestamp=utcnow + timedelta(seconds=1))
+        p3 = Post(body="post from mary",
+                  author=u3, timestamp=utcnow + timedelta(seconds=1))
+        p4 = Post(body="post from david",
+                  author=u4, timestamp=utcnow + timedelta(seconds=1))
+
+        a = [p1, p2, p3, p4]
 
     def test_make_valid_username(self):
         u = User(username='john', email='john@example.com')
