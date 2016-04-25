@@ -1,7 +1,8 @@
-from app.models import User
 from flask.ext.wtf import Form
 from wtforms import BooleanField, PasswordField, StringField, TextAreaField
 from wtforms.validators import EqualTo, InputRequired, Length
+
+from app.models import User
 
 
 class EditForm(Form):

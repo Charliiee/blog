@@ -1,8 +1,9 @@
-from config import  (basedir, ADMINS, MAIL_PASSWORD,
-                     MAIL_PORT, MAIL_SERVER, MAIL_USERNAME)
 from flask import Flask
 from flask.ext.sqlalchemy import SQLAlchemy
 from flask.ext.login import LoginManager
+
+from config import  (basedir, ADMINS, MAIL_PASSWORD,
+                     MAIL_PORT, MAIL_SERVER, MAIL_USERNAME)
 
 
 app = Flask(__name__)

@@ -1,2 +1,5 @@
 *.sublime*
 *.pyc
+*.db
+
+config.py

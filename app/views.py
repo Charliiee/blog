@@ -1,12 +1,14 @@
-from . import app, db, login_manager
-from .forms import EditForm, LoginForm, RegisterForm
-from .models import User
-from .oauth import OAuthSignIn
+from datetime import datetime
+
 from flask import (render_template, flash, redirect,
                    session, url_for, request, g)
 from flask.ext.login import (login_user, logout_user,
                              current_user, login_required)
-from datetime import datetime
+
+from . import app, db, login_manager
+from .forms import EditForm, LoginForm, RegisterForm
+from .models import User
+from .oauth import OAuthSignIn
 
 
 @app.before_request

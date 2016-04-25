@@ -1,8 +1,9 @@
-from flask import current_app, redirect, request, url_for
-from rauth import OAuth2Service
+import json
 from urllib.request import urlopen
 
-import json
+from flask import current_app, redirect, request, url_for
+from rauth import OAuth2Service
+
 
 
 class OAuthSignIn(object):

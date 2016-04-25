@@ -1,7 +1,8 @@
-from app import db
-from flask.ext.login import UserMixin
 from hashlib import md5
 
+from flask.ext.login import UserMixin
+
+from app import db
 
 followers = db.Table('followers',
     db.Column('follower_id', db.Integer, db.ForeignKey('users.id')),
@@ -56,6 +57,14 @@ class User(UserMixin, db.Model):
         return self.followed.filter(
             followers.c.followed_id == user.id
         ).count() > 0
+
+    def followed_posts(self):
+        return Post.query.join(
+            followers,
+            (followers.c.followed_id == Post.user_id)
+        ).filter(
+            followers.c.follower_id == self.id
+        ).order_by(Post.timestamp.desc())
 
     @staticmethod
     def make_valid_username(username):
