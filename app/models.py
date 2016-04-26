@@ -71,7 +71,7 @@ class User(UserMixin, db.Model):
         if User.query.filter_by(username=username).first() is None:
             return username
         query = User.query.filter(User.username.startswith(username))
-        new_username = query.order_by('username desc').first().username
+        new_username = query.order_by(User.username.desc()).first().username
         # example -> 0; example3 -> 3
         last_version = int(new_username.split(username)[-1] or 0)
         last_version += 1

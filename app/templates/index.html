@@ -2,9 +2,28 @@
 
 {% block content %}
 	{% if current_user.is_authenticated %}
-		<h1>Hello, {{ current_user.username }}!</h1>
+		<h1>Hi, {{ current_user.username }}!</h1>
+		<form action="" method="post" name="post">
+			{{ form.hidden_tag() }}
+			<table>
+				<tr>
+					<td>Say something:</td>
+					<td>{{ form.post(size=30, maxlength=140) }}</td>
+					<td>
+					{% for error in form.post.errors %}
+						<span style="color: red;">[{{ error }}]</span>
+					{% endfor %}
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="submit" value="Post !"></td>
+					<td></td>
+				</tr>
+			</table>
+		</form>
 	{% else %}
-		<h1>Hello, User!</h1>
+		<h1>Welcome Anonymous Guy!</h1>
 	{% endif %}
 	{% for post in posts %}
 	<div>

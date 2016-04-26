@@ -6,8 +6,8 @@ from flask.ext.login import (login_user, logout_user,
                              current_user, login_required)
 
 from . import app, db, login_manager
-from .forms import EditForm, LoginForm, RegisterForm
-from .models import User
+from .forms import EditForm, LoginForm, PostForm, RegisterForm
+from .models import Post, User
 from .oauth import OAuthSignIn
 
 
@@ -57,22 +57,26 @@ def follow(username):
     return redirect(url_for('user', username=username))
 
 
-@app.route('/')
-@app.route('/index')
+@app.route('/', methods=['GET', 'POST'])
+@app.route('/index', methods=['GET', 'POST'])
 # @login_required
 def index():
-    user = g.user
-    posts = [
-        {
-            'author': {'username': "Flavio"},
-            'body': "Beatiful day in Portland!"
-        },
-        {
-            'author': {'username': "Tinaa"},
-            'body': "The Avengers movie was so cool!"
-        }
-    ]
-    return render_template('index.html', title='Home', user=user, posts=posts)
+    form = PostForm()
+    if form.validate_on_submit():
+        post = Post(body=form.post.data,
+                    timestamp=datetime.utcnow(), author=g.user)
+        db.session.add(post)
+        db.session.commit()
+        flash('Your post is now live!')
+        return redirect(url_for('index'))
+    if not g.user.is_anonymous and g.user.is_authenticated:
+        posts = g.user.followed_posts().all()
+    else:
+        posts = Post.query.order_by(Post.timestamp.desc()).limit(50).all()
+    return render_template('index.html',
+                            title='Home',
+                            form=form,
+                            posts=posts)
 
 
 @login_manager.user_loader

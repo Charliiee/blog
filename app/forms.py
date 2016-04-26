@@ -34,6 +34,10 @@ class LoginForm(Form):
     remember_me = BooleanField('Remember Me', default=False)
 
 
+class PostForm(Form):
+    post = StringField('post', validators=[InputRequired(), Length(max=140)])
+
+
 class RegisterForm(Form):
     username = StringField('User name', validators=[InputRequired()])
     email = StringField('Email', validators=[InputRequired()])
