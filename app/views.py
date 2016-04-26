@@ -9,6 +9,7 @@ from . import app, db, login_manager
 from .forms import EditForm, LoginForm, PostForm, RegisterForm
 from .models import Post, User
 from .oauth import OAuthSignIn
+from config import POSTS_PER_PAGE
 
 
 @app.before_request
@@ -59,8 +60,9 @@ def follow(username):
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
+@app.route('/index/<int:page>', methods=['GET', 'POST'])
 # @login_required
-def index():
+def index(page=1):
     form = PostForm()
     if form.validate_on_submit():
         post = Post(body=form.post.data,
@@ -70,9 +72,13 @@ def index():
         flash('Your post is now live!')
         return redirect(url_for('index'))
     if not g.user.is_anonymous and g.user.is_authenticated:
-        posts = g.user.followed_posts().all()
+        posts = g.user.followed_posts().paginate(page,
+                                                 POSTS_PER_PAGE,
+                                                 False).items
     else:
-        posts = Post.query.order_by(Post.timestamp.desc()).limit(50).all()
+        posts = Post.query.order_by('timestamp desc').paginate(page,
+                                                               POSTS_PER_PAGE,
+                                                               False).items
     return render_template('index.html',
                             title='Home',
                             form=form,
