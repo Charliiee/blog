@@ -25,9 +25,20 @@
 	{% else %}
 		<h1>Welcome Anonymous Guy!</h1>
 	{% endif %}
-	{% for post in posts %}
-	<div>
-		<p> {{ post.author.username }} says: <b> {{ post.body }}</b></p>
-	</div>
+	{% for post in posts.items %}
+		{% include 'post.html' %}
 	{% endfor %}
+
+	{% if posts.has_prev %} 
+		<a href="{{ url_for('index', page=posts.prev_num) }}">&lt;&lt;  Newer Posts </a> 
+	{% else %} 
+		&lt;&lt; Newer Posts 
+	{% endif %} |
+
+	{% if posts.has_next %} 
+		<a href="{{ url_for('index', page=posts.next_num) }}">Older Posts &gt;&gt;</a> 
+	{% else %} 
+		Older Posts &gt;&gt;
+	{% endif %}
+
 {% endblock content %}

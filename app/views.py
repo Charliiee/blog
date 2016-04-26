@@ -74,15 +74,15 @@ def index(page=1):
     if not g.user.is_anonymous and g.user.is_authenticated:
         posts = g.user.followed_posts().paginate(page,
                                                  POSTS_PER_PAGE,
-                                                 False).items
+                                                 False)
     else:
         posts = Post.query.order_by('timestamp desc').paginate(page,
                                                                POSTS_PER_PAGE,
-                                                               False).items
+                                                               False)
     return render_template('index.html',
-                            title='Home',
-                            form=form,
-                            posts=posts)
+                           title='Home',
+                           form=form,
+                           posts=posts)
 
 
 @login_manager.user_loader
