@@ -3,6 +3,8 @@
 {% block content %}
 	{% if current_user.is_authenticated %}
 		<h1>Hi, {{ current_user.username }}!</h1>
+		{% include 'flash.html' %}
+		{# stopped here! #}
 		<form action="" method="post" name="post">
 			{{ form.hidden_tag() }}
 			<table>
@@ -14,11 +16,7 @@
 						<span style="color: red;">[{{ error }}]</span>
 					{% endfor %}
 					</td>
-				</tr>
-				<tr>
-					<td></td>
 					<td><input type="submit" value="Post !"></td>
-					<td></td>
 				</tr>
 			</table>
 		</form>
